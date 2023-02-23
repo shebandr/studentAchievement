@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "studentAchievement", "studentAchievement\studentAchievement.csproj", "{C74CB59B-FB80-4B22-AFCB-E90284A57C39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentAchievementTests", "StudentAchievementTests\StudentAchievementTests.csproj", "{48531272-09E8-4539-BE80-1E9E19C517BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C74CB59B-FB80-4B22-AFCB-E90284A57C39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C74CB59B-FB80-4B22-AFCB-E90284A57C39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C74CB59B-FB80-4B22-AFCB-E90284A57C39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C74CB59B-FB80-4B22-AFCB-E90284A57C39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48531272-09E8-4539-BE80-1E9E19C517BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48531272-09E8-4539-BE80-1E9E19C517BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48531272-09E8-4539-BE80-1E9E19C517BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48531272-09E8-4539-BE80-1E9E19C517BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {884F4E10-5BB7-43C5-A286-F8483E0A7502}
+	EndGlobalSection
+EndGlobal
