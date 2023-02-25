@@ -1,14 +1,19 @@
-using Avalonia.X11;
 using studentAchievement.Models;
 
-namespace studentAchievement.ViewModels
+namespace studentAchievement.ViewModels;
+
+public class MainWindowViewModel : ViewModelBase
 {
-    public class MainWindowViewModel : ViewModelBase
+    public MainWindowViewModel()
     {
-        public string a() { 
-         Student stud = new("a b c", 1, 1, 1, 1, 1, 1, 1);
-            return stud.ObjToString();
-        }
-        public string Greeting => a();
+        Greeting = a();
+    }
+
+    public string Greeting { get; set; }
+
+    public static string a()
+    {
+        Student stud = new("a b c", 1, 1, 1, 1, 1, 1, 1);
+        return stud.ObjToString();
     }
 }
