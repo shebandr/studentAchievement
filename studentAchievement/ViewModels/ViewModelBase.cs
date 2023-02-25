@@ -1,8 +1,7 @@
 using ReactiveUI;
 
-namespace studentAchievement.ViewModels
+namespace studentAchievement.ViewModels;
+
+public class ViewModelBase : ReactiveObject
 {
-    public class ViewModelBase : ReactiveObject
-    {
-    }
 }

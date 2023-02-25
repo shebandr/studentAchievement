@@ -1,11 +1,10 @@
-namespace StudentAchievementTests
-{
-    public class UnitTest1
-    {
-        [Fact]
-        public void Test1()
-        {
+namespace StudentAchievementTests;
 
-        }
+public class UnitTest1
+{
+    [Fact]
+    public void Test1()
+    {
+
     }
 }
