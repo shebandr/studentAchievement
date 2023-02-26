@@ -1,102 +1,140 @@
-﻿namespace studentAchievement.Models;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
-internal class Student
+namespace studentAchievement.Models
 {
-    private int cs1;
-    private int cs2;
-    private int cs3;
-    private int cs4;
-    private int cs5;
-    private int cs6;
-
-    public Student()
+    public class Student
     {
-        Fio = "";
-    }
 
-    public Student(string f, int id, int cs1, int cs2, int cs3, int cs4, int cs5, int cs6)
-    {
-        Fio = f;
-        Id = id;
-        Cs1 = cs1;
-        Cs2 = cs2;
-        Cs3 = cs3;
-        Cs4 = cs4;
-        Cs5 = cs5;
-        Cs6 = cs6;
-    }
+        public Student(string f, int cs1, int cs2, int cs3, int cs4, int cs5, int cs6)
+        {
+            Fio = f;
+            sc1 = cs1;
+            sc2 = cs2;
+            sc3 = cs3;
+            sc4 = cs4;
+            sc5 = cs5;
+            sc6 = cs6;
 
-    public Student(string s)
-    {
-        var a = s.Split("~");
-        Fio = a[0];
-        Id = int.Parse(a[1]);
-        Cs1 = int.Parse(a[2]);
-        Cs2 = int.Parse(a[3]);
-        Cs3 = int.Parse(a[4]);
-        Cs4 = int.Parse(a[5]);
-        Cs5 = int.Parse(a[6]);
-        Cs6 = int.Parse(a[7]);
-    }
-
-    public string Fio { set; get; } = "";
-
-    public int Id { set; get; }
-
-    public int Cs1
-    {
-        set {
-            if (value is >= 0 and <= 2) cs1 = value;
         }
-        get => cs1;
-    }
+        public Student()
+        {
 
-    public int Cs2
-    {
-        set {
-            if (value is >= 0 and <= 2) cs2 = value;
         }
-        get => cs2;
-    }
 
-    public int Cs3
-    {
-        set {
-            if (value is >= 0 and <= 2) cs3 = value;
+        public Student(string s)
+        {
+            var a = s.Split("~");
+            Fio = a[0];
+            sc1 = int.Parse(a[1]);
+            sc2 = int.Parse(a[2]);
+            sc3 = int.Parse(a[3]);
+            sc4 = int.Parse(a[4]);
+            sc5 = int.Parse(a[5]);
+            sc6 = int.Parse(a[6]);
         }
-        get => cs3;
-    }
 
-    public int Cs4
-    {
-        set {
-            if (value is >= 0 and <= 2) cs4 = value;
+        private float sr_scores = 0;
+        private int[] scores = { 0, 0, 0, 0, 0, 0 };
+        private string fio = "";
+
+        public string Fio
+        {
+            get => fio;
+            set => fio = value;
         }
-        get => cs4;
-    }
 
-    public int Cs5
-    {
-        set {
-            if (value is >= 0 and <= 2) cs5 = value;
+        public int sc1
+        {
+            get => scores[0];
+            set => scores[0] = value;
         }
-        get => cs5;
-    }
 
-    public int Cs6
-    {
-        set {
-            if (value is >= 0 and <= 2) cs6 = value;
+
+        public int sc2
+        {
+            get => scores[1];
+            set => scores[1] = value;
         }
-        get => cs6;
+
+        public int sc3
+        {
+            get => scores[2];
+            set => scores[2] = value;
+        }
+
+        public int sc4
+        {
+            get => scores[3];
+            set => scores[3] = value;
+        }
+
+        public int sc5
+        {
+            get => scores[4];
+            set => scores[4] = value;
+        }
+        public int sc6
+        {
+            get => scores[5];
+            set => scores[5] = value;
+        }
+
+        public float Average_Score
+        {
+            get
+            {
+                sr_scores = 0;
+                foreach (int num in scores)
+                {
+                    sr_scores += num;
+                }
+                return sr_scores /= 6;
+            }
+        }
+        public Student[] ReadFromFile()
+        {
+            string path = "stud.txt";
+            List<Student> people = new();
+            using (StreamWriter writer = new StreamWriter(path, false))
+            {
+                writer.WriteLine("");
+            }
+            using (StreamReader reader = new StreamReader(path))
+            {
+                string? line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    people.Add(new Student(line));
+                }
+            }
+            people.RemoveAt(1);
+
+            return people.ToArray();
+        }
+
+        public void WriteToFile(Student[] peopl)
+        {
+            List<Student> people = peopl.ToList();
+            string path = "stud.txt";
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                foreach (Student student in people)
+                {
+                    if (student.Fio != "")
+                    {
+                        writer.WriteLine(student.ObjToString());
+                    }
+                }
+            }
+        }
+        public string ObjToString()
+        {
+            var b = Fio + "~" + scores[0] + "~" + scores[1] + "~" + scores[2] + "~" + scores[3] + "~" + scores[4] + "~" + scores[5];
+            return b;
+        }
     }
 
-    public int AverageCs() =>
-        (Cs1 + Cs2 + Cs3 + Cs4 + Cs5 + Cs6) / 6;
-
-    public string ObjToString()
-    {
-        var b = Fio + "~" + Id + "~" + Cs1 + "~" + Cs2 + "~" + Cs3 + "~" + Cs4 + "~" + Cs5 + "~" + Cs6;
-        return b;
-    }
 }

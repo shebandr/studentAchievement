@@ -1,7 +1,5 @@
-﻿using System.Reflection;
-
-using Avalonia;
-
+﻿using Avalonia;
+using System.Reflection;
 using Xunit.Abstractions;
 using Xunit.Sdk;
 
@@ -79,7 +77,8 @@ public class AvaloniaUiTestFramework : XunitTestFramework
         protected override void SetupSyncContext(int maxParallelThreads)
         {
             var tcs = new TaskCompletionSource<SynchronizationContext>();
-            var thread = new Thread(() => {
+            var thread = new Thread(() =>
+            {
                 try
                 {
                     //AvaloniaApp.RegisterDependencies();
@@ -90,7 +89,8 @@ public class AvaloniaUiTestFramework : XunitTestFramework
                         .StartWithClassicDesktopLifetime(new string[0]);
                 }
                 catch (Exception e) { tcs.SetException(e); }
-            }) {
+            })
+            {
                 IsBackground = true
             };
 
